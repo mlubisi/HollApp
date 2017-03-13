@@ -1,0 +1,24 @@
+<div class="jumbotron">
+  <h2 class="text-center"><img width="100px" height="100px" src="img/icon.ico"></h2>
+  <h2 class="text-center">Home</h2>
+  <div class="text-center" ng-if="!isAuthenticated">
+    <p>Hello... <a ui-sref="login" class="btn btn-success btn-lg">Sign in.</a> To Continue</p>
+  </div>
+  <div class="text-center" ng-if="isAuthenticated">
+    <h2>Welcome, {{ vm.profile.nickname }}</h2>
+    <img ng-src="{{ vm.profile.picture }}">
+  </div>
+
+  <div class="text-center" ng-if="isAuthenthicated">
+  	<button class="btn btn-primary" ng-click="vm.linkAccount()">Add_</button>
+	<ul .class="list-group identities-list">
+		<h3>Accoutns_</h3>
+		<li class="list-group-item identities-item" ng-repeat="identity in vm.identities">
+			<img ng-src="{{identity.profileData.picture}}"/>
+			<span>{{identity.profileData.name || identity.profileData.email}}</span>
+			<button class="btn btn-danger" ng-click="vm.unLinkAccoutn(identity)"><i class="glyphicon glyphicon-trash"></i></button>
+		</li>
+	</ul>
+  </div>
+
+</div>
